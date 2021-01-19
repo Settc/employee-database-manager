@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const inquirer = require("inquirer");
+const cTable = require("")
 
 var connection = mysql.createConnection({
     host: "localhost",
@@ -9,5 +10,16 @@ var connection = mysql.createConnection({
     database: "employeeTracker_db"
   });
   
-    
-  
+connection.connect(function(err) 
+{
+    if (err) throw err;
+    startPrompts();
+}) 
+
+function startPrompts()
+{
+    inquirer.prompt
+    ({
+        name:
+    })
+}
