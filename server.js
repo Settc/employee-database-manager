@@ -189,8 +189,47 @@ function add() {
 
 
 function viewAll() {
-    console.log("View all")
-    connection.end()
+    inquirer.prompt([
+        {
+            name: "viewChoice",
+            type: "list",
+            message: "Would you like to view departments, roles, or employees?",
+            choices: ["Departments", "Roles", "Employees", "Main Menu"]
+        }
+    ]).then(function(answer){
+        switch(answer.viewChoice) {
+            case "Departments":
+                connection.query(
+                    "SELECT * FROM department", function(err, results) {
+                        if (err) throw err
+                        console.table(results)
+                        viewAll()
+                    }
+                )
+            break
+            case "Roles":
+                connection.query(
+                    "SELECT * FROM role", function(err, results) {
+                        if (err) throw err
+                        console.table(results)
+                        viewAll()
+                    }
+                )
+            break
+            case "Employees":
+                connection.query(
+                    "SELECT * FROM employee", function(err, results) {
+                        if (err) throw err
+                        console.table(results)
+                        viewAll()
+                    }
+                )
+            break
+            case "Main Menu":
+                startPrompts()
+        }
+    })
+    
     
 }
 // function add() {
