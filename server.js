@@ -232,9 +232,70 @@ function viewAll() {
     
     
 }
-// function add() {
-//     console.log("Add")
-// }
+
+function updateRoles() {
+    inquirer.prompt([
+        {
+            name:"chooseEmployee",
+            type:"input",
+            message:"Enter ID number of employee whose role you wish to update:"
+        },
+        {
+            name:"chooseRole",
+            type:"input",
+            message: "Input ID of role you wish to change employee to:"
+        }
+    ]).then(function(answer) {
+        connection.query(
+            "UPDATE employee SET ? WHERE ?",
+            [
+                {
+                    role_id: answer.chooseRole
+                },
+                {
+                    id: answer.chooseEmployee
+                }
+            ],
+            function(err) {
+                if (err) throw err
+                console.log("Employee updated")
+                startPrompts()
+            }
+        )
+    })
+}
+
+function updateManagers() {
+    inquirer.prompt([
+        {
+            name:"chooseEmployee",
+            type:"input",
+            message:"Enter ID number of employee whose manager you wish to update:"
+        },
+        {
+            name:"chooseManager",
+            type:"input",
+            message: "Input ID of manager you wish to change employee to:"
+        }
+    ]).then(function(answer) {
+        connection.query(
+            "UPDATE employee SET ? WHERE ?",
+            [
+                {
+                    manager_id: answer.chooseManager
+                },
+                {
+                    id: answer.chooseEmployee
+                }
+            ],
+            function(err) {
+                if (err) throw err
+                console.log("Employee updated")
+                startPrompts()
+            }
+        )
+    })
+}
 // function add() {
 //     console.log("Add")
 // }
