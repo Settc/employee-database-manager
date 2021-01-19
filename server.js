@@ -27,8 +27,7 @@ function startPrompts()
         message: "Please make a selection:",
         choices: ["Add depts/roles/employees", 
         "View depts/roles/employees", "Update roles",
-        "Update managers", "View employees by manager", 
-        "Delete depts/roles/employees", "View budget", "EXIT"]
+        "Update managers", "EXIT"]
     })
     .then(function(answer)
     {
@@ -296,18 +295,8 @@ function updateManagers() {
         )
     })
 }
-// function add() {
-//     console.log("Add")
-// }
-// function add() {
-//     console.log("Add")
-// }
-// function add() {
-//     console.log("Add")
-// }
-// function add() {
-//     console.log("Add")
-// }
+
+
 
 //Add departments, roles, employees
 //View departments, roles, employees
@@ -315,4 +304,4 @@ function updateManagers() {
 //Update employee managers
 //View employees by manager
 //Delete departments, roles, and employees
-//View combined salaries for all employees
+//View combined salaries for all employees by department
